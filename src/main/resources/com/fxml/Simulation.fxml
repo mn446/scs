@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="1014.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.front.FXMLDocumentController">
+    <children>
+      <BorderPane layoutX="368.0" layoutY="111.0" prefHeight="1014.0" prefWidth="1214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <Pane prefHeight="109.0" prefWidth="1214.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="startSimulation" layoutX="19.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleButtonActionStart" prefHeight="51.0" prefWidth="470.0" text="Start" />
+                  <Button fx:id="pause" layoutX="495.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleButtonActionPause" prefHeight="51.0" prefWidth="440.0" text="Pause" />
+               </children></Pane>
+         </bottom>
+         <center>
+            <SplitPane dividerPositions="0.5" prefHeight="575.0" prefWidth="1214.0" BorderPane.alignment="CENTER">
+              <items>
+                  <BorderPane prefHeight="459.0" prefWidth="607.0">
+                     <bottom>
+                        <LineChart fx:id="irradChart" prefHeight="250" prefWidth="600" BorderPane.alignment="CENTER">
+                           <xAxis>
+                              <NumberAxis side="BOTTOM" fx:id="x1" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id="y1" side="LEFT" />
+                           </yAxis>
+                           <padding>
+                              <Insets bottom="30" left="20.0" right="50.0" top="0" />
+                           </padding>
+                        </LineChart>
+                     </bottom>
+                     <center>
+                          <LineChart fx:id="tempChart" prefHeight="250" prefWidth="600" BorderPane.alignment="CENTER">
+                              <xAxis>
+                                <NumberAxis side="BOTTOM" fx:id="x" />
+                              </xAxis>
+                              <yAxis>
+                                <NumberAxis fx:id="y" side="LEFT" />
+                              </yAxis>
+                           <padding>
+                              <Insets bottom="30" left="20.0" right="50.0" top="0" />
+                           </padding>
+                          </LineChart>
+                     </center>
+                     <top>
+                        <LineChart fx:id="annualIrradChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="107.0" prefWidth="607.0" BorderPane.alignment="CENTER">
+                          <xAxis>
+                            <NumberAxis side="BOTTOM" fx:id="x2" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="y2" prefHeight="39.0" prefWidth="0.0" side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </top>
+                  </BorderPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="644.0" prefWidth="595.0">
+                     <children>
+                        <Rectangle fx:id="sky" arcHeight="5.0" arcWidth="5.0" fill="#21afff" height="1000.0" layoutX="-2.0" layoutY="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="2000.0" />
+                        <Circle fx:id="sun" layoutX="43.0" layoutY="337.0" radius="36.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                           <fill>
+                              <RadialGradient centerX="0.5" centerY="0.5" focusAngle="-107.35" radius="0.6904761904761904">
+                                 <stops>
+                                    <Stop color="#eedb0a" />
+                                    <Stop color="#eedb0a" offset="0.21851851851851853" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </RadialGradient>
+                           </fill>
+                        </Circle>
+                        <ImageView fx:id="floor" fitHeight="830.0" fitWidth="2684.0" layoutX="-9.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="cloud1" fitHeight="150.0" fitWidth="200.0" layoutX="65.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="collectorSystem2" fitHeight="300.0" fitWidth="581.0" layoutX="211.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/colSyst2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="collectorSystem1" fitHeight="300.0" fitWidth="581.0" layoutX="211.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/colSyst1.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="suelo1" fitHeight="830.0" fitWidth="2684.0" layoutX="1.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label alignment="CENTER" layoutX="394.0" layoutY="311.0" prefHeight="16.0" prefWidth="36.0" text="°C"></Label>
+                        <TextField fx:id="tempOutColTF" alignment="CENTER" layoutX="350.0" layoutY="284.0" prefHeight="30.0" prefWidth="50.0"></TextField>
+                        <Label alignment="CENTER" layoutX="169.0" layoutY="507.0" prefHeight="16.0" prefWidth="36.0" text="°C">                                                      </Label>
+                        <TextField fx:id="tempInColTF" alignment="CENTER" layoutX="124.0" layoutY="500.0" prefHeight="30.0" prefWidth="50.0" />
+                        <Label contentDisplay="CENTER" layoutX="230.0" layoutY="259.0" prefHeight="16.0" prefWidth="180.0" text="Temperature Collector OUT">                                                      </Label>
+                        <Label alignment="CENTER" layoutX="25.0" layoutY="536.0" prefHeight="17.0" prefWidth="177.0" text="Temperature Collector IN">                                                      </Label>
+                        <Label alignment="CENTER" layoutX="576.0" layoutY="294.0" prefHeight="16.0" prefWidth="36.0" text="°C">                                                      </Label>
+                        <TextField fx:id="tempInTKTF" alignment="CENTER" layoutX="531.0" layoutY="286.0" prefHeight="30.0" prefWidth="50.0" />
+                        <Label alignment="CENTER" layoutX="426.0" layoutY="259.0" prefHeight="16.0" prefWidth="210.0" text="Temperature Accumulator IN">                                                      </Label>
+                        <Label alignment="CENTER" layoutX="737.0" layoutY="561.0" prefHeight="16.0" prefWidth="36.0" text="°C">                                                      </Label>
+                        <TextField fx:id="tempOutTKTF" alignment="CENTER" layoutX="692.0" layoutY="554.0" prefHeight="30.0" prefWidth="50.0" />
+                        <Label alignment="CENTER" layoutX="592.0" layoutY="593.0" prefHeight="16.0" prefWidth="210.0" text="Temperature Accumulator OUT">                                                      </Label>
+                        <ImageView fx:id="cloud2" fitHeight="150.0" fitWidth="200.0" layoutX="483.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="cloud3" fitHeight="150.0" fitWidth="200.0" layoutX="581.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="day" alignment="CENTER" layoutX="25.0" layoutY="14.0" prefHeight="29.0" prefWidth="239.0">                                                      </Label>
+                        <ToggleButton fx:id="tempOutColTGB" layoutX="269.0" layoutY="284.0" mnemonicParsing="false" onAction="#tempOutColShowChart" prefHeight="30.0" prefWidth="68.0" text="Hide" />
+                        <ToggleButton fx:id="tempInColTGB" layoutX="45.0" layoutY="500.0" mnemonicParsing="false" onAction="#tempInColShowChart" prefHeight="30.0" prefWidth="68.0" text="Hide" />
+                        <ToggleButton fx:id="tempInTKTGB" layoutX="456.0" layoutY="286.0" mnemonicParsing="false" onAction="#tempInTKShowChart" prefHeight="30.0" prefWidth="68.0" text="Hide" />
+                        <ToggleButton fx:id="tempOutTKTGB" layoutX="616.0" layoutY="554.0" mnemonicParsing="false" onAction="#tempOutTKShowChart" prefHeight="30.0" prefWidth="68.0" text="Hide" />
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </center>
+         <top>
+            <SplitPane dividerPositions="0.10101010101010101" orientation="VERTICAL" prefHeight="260.0" prefWidth="1214.0" BorderPane.alignment="CENTER">
+              <items>
+                  <Label prefHeight="41.0" prefWidth="400" text="Solar Collector System Simulation">      
+                     <font>
+                        <Font size="22.0" />
+                     </font>                                    
+                  </Label>
+                  <TabPane prefHeight="65.0" prefWidth="1212.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Collectors">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="179.0" prefWidth="1212.0">
+                                 <children>
+                                    <Label layoutX="300.0" layoutY="24.0" prefHeight="16.0" prefWidth="221.0" text="Tilt angle (°)">                                                                              </Label>
+                                    <TextField fx:id="tiltAngle" layoutX="440.0" layoutY="53.0" onKeyPressed="#tiltAngTextField" prefHeight="26.0" prefWidth="54.0" />
+                                    <Label layoutX="300.0" layoutY="87.0" prefHeight="16.0" prefWidth="221.0" text="Orientation angle (°)">                                                                              </Label>
+                                    <TextField fx:id="orientationAngle" layoutX="440.0" layoutY="117.0" prefHeight="26.0" prefWidth="54.0" />
+                                    <Slider fx:id="tiltAngleSli" layoutX="300.0" layoutY="56.0" onMouseDragged="#tiltAngSlider" />
+                                    <Slider fx:id="orientationAngleSli" layoutX="300.0" layoutY="122.0" onMouseDragged="#orientationAngSlider" />
+                                    <Label layoutX="540.0" layoutY="24.0" prefHeight="16.0" prefWidth="221.0" text="Collection area (m²)">                                                                              </Label>
+                                    <TextField fx:id="colArea" layoutX="677.0" layoutY="53.0" prefHeight="26.0" prefWidth="54.0" />
+                                    <Slider fx:id="colAreaSli" layoutX="536.0" layoutY="56.0" onMouseDragged="#colAreaSlider" />
+                                    <Label layoutX="542.0" layoutY="105.0" prefHeight="16.0" prefWidth="129.0" text="Num. of collectors">                                                                              </Label>
+                                    <TextField fx:id="numCol" layoutX="677.0" layoutY="104.0" prefHeight="26.0" prefWidth="54.0" />
+                                    <Label layoutX="780.0" layoutY="29.0" prefHeight="16.0" prefWidth="174.0" text="Heat Loss Coef. 1 (W/m²C))">                                                                              </Label>
+                                    <TextField fx:id="coefP1" layoutX="965.0" layoutY="30.0" prefHeight="26.0" prefWidth="54.0" />
+                                    <Label layoutX="780.0" layoutY="69.0" prefHeight="16.0" prefWidth="170.0" text="Heat Loss Coef. 2 (W/m²C)">                                                                              </Label>
+                                    <TextField fx:id="coefP2" layoutX="965.0" layoutY="71.0" prefHeight="26.0" prefWidth="54.0" />
+                                    <Label layoutX="780.0" layoutY="109.0" prefHeight="16.0" prefWidth="129.0" text="Optical Efficiency">                                                                              </Label>
+                                    <TextField fx:id="opEfficiency" layoutX="965.0" layoutY="111.0" prefHeight="26.0" prefWidth="54.0" />
+                                    <Box fx:id="box" depth="10.0" height="150.0" layoutX="136.0" layoutY="85.0" width="100.0" />
+                                    <Label layoutX="1062.0" layoutY="29.0" prefHeight="16.0" prefWidth="180.0" text="Collector Efficiency">                                                                              </Label>
+                                    <Label fx:id="colEfficiency" alignment="CENTER" layoutX="1062.0" layoutY="57.0" prefHeight="32.0" prefWidth="153.0" />
+                                    <Label layoutX="1225.0" layoutY="66.0" text="\%" />
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Heat Exchanger">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="50.0" layoutY="20.0" prefHeight="16.0" prefWidth="261.0" text="Heat Transfer Coeficient (W/m²C)">                                                                              </Label>
+                                    <TextField fx:id="tansfCoef" layoutX="50.0" layoutY="47.0" prefHeight="26.0" prefWidth="221.0" />
+                                    <Label layoutX="50.0" layoutY="82.0" prefHeight="16.0" prefWidth="228.0" text="Exchange area (m²)">                                                                              </Label>
+                                    <TextField fx:id="exchangeArea" layoutX="50.0" layoutY="108.0" />
+                                    <Label layoutX="340.0" layoutY="20.0" prefHeight="16.0" prefWidth="208.0" text="Exchanger Efficiency">                                                                              </Label>
+                                    <Label fx:id="exchangerEfficiency" alignment="CENTER" layoutX="340.0" layoutY="44.0" prefHeight="32.0" prefWidth="153.0" />
+                                    <Label layoutX="507.0" layoutY="48.0" text="\%">                                                                              </Label>
+                                 </children></AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Pumps">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ToggleButton fx:id="btnPump1" layoutX="40.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#btnCtrlPump1" text="On">                                                                              </ToggleButton>
+                                    <Label layoutX="40.0" layoutY="27.0" prefHeight="16.0" prefWidth="229.0" text="Primary circuit pump">                                                                              </Label>
+                                    <ToggleButton fx:id="btnPump2" layoutX="300.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#btnCtrlPump2" text="On">                                                                              </ToggleButton>
+                                    <Label layoutX="300.0" layoutY="27.0" prefHeight="16.0" prefWidth="229.0" text="Secondary circuit pump">                                                                              </Label>
+                                    <ToggleButton fx:id="btnPump3" layoutX="560.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#btnCtrlPump3" text="On">                                                                              </ToggleButton>
+                                    <Label layoutX="560.0" layoutY="27.0" prefHeight="16.0" prefWidth="229.0" text="Terciary cicuit pump">                                                                              </Label>
+                                    <Label layoutX="40.0" layoutY="90.0" prefHeight="16.0" prefWidth="221.0" text="Pump 1 flowRate  (L/s)">                                                                              </Label>
+                                    <TextField fx:id="TFPump1" layoutX="179.0" layoutY="114.0" onKeyPressed="#Pump1TextField" prefHeight="26.0" prefWidth="54.0" />
+                                    <Slider fx:id="SliPump1" layoutX="39.0" layoutY="120.0" onMouseDragged="#Pump1Slider" />
+                                    <Label layoutX="300.0" layoutY="90.0" prefHeight="16.0" prefWidth="221.0" text="Pump 2 flowRate (L/s)">                                                                              </Label>
+                                    <TextField fx:id="TFPump2" layoutX="439.0" layoutY="114.0" onKeyPressed="#Pump2TextField" prefHeight="26.0" prefWidth="54.0" />
+                                    <Slider fx:id="SliPump2" layoutX="300.0" layoutY="120.0" onMouseDragged="#Pump2Slider" />
+                                    <Label layoutX="560.0" layoutY="90.0" prefHeight="16.0" prefWidth="221.0" text="Pump 3 flowRate (L/s)">                                                                              </Label>
+                                    <TextField fx:id="TFPump3" layoutX="699.0" layoutY="114.0" onKeyPressed="#Pump3TextField" prefHeight="26.0" prefWidth="54.0" />
+                                    <Slider fx:id="SliPump3" layoutX="560.0" layoutY="120.0" onMouseDragged="#Pump3Slider" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Controllers">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="161.0" prefWidth="1212.0">
+                                 <children>
+                                    <Label layoutX="63.0" layoutY="21.0" prefHeight="16.0" prefWidth="229.0" text="Efficiency control">                                                                              </Label>
+                                    <Label layoutX="60.0" layoutY="52.0" prefHeight="16.0" prefWidth="186.0" text="Temp. Dif. to turn on (°C)">                                                                              </Label>
+                                    <Label layoutX="62.0" layoutY="78.0" prefHeight="16.0" prefWidth="186.0" text="Temp. Dif to turn off (°C)">                                                                              </Label>
+                                    <ToggleButton fx:id="ctrlEfActive" layoutX="60.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#btnCtrlEf" prefHeight="26.0" prefWidth="233.0" text="Active">                                                                              </ToggleButton>
+                                    <TextField fx:id="ctrlEfOff" layoutX="247.0" layoutY="75.0" prefHeight="26.0" prefWidth="47.0" />
+                                    <TextField fx:id="ctrlEfOn" layoutX="247.0" layoutY="47.0" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+              </items>
+            </SplitPane>
+         </top>
+      </BorderPane>
+    </children>
+</AnchorPane>

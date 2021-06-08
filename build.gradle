@@ -1,0 +1,35 @@
+plugins {
+  id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+distributions {
+    main {
+        distributionBaseName = 'scs'
+        contents {
+              from('.'){
+                  include 'solar_data.db'
+                  into('bin')
+            }
+        }
+    }
+}
+
+repositories {
+  jcenter()
+  mavenCentral()
+}
+
+javafx {
+    version = '15.0.1'
+    modules = [ 'javafx.base', 'javafx.graphics', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web' ]
+}
+
+mainClassName = 'com.front.Simulation'
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.30.1'
+}
+

@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+.root
+{
+    -fx-base: rgb(40, 55, 71);
+    -fx-background: rgb(33, 47, 60);
+    -fx-font-family: "Montserrat";
+}
+
+.diaLabel
+{
+    -fx-text-fill: black;
+}
+
+.efficiencyLabel
+{
+    -fx-background-color: #1F618D;
+    -fx-border-width: 1px;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #1F618D;
+    -fx-text-alignment: center;
+    
+}
+
+.tempChart
+{
+    -fx-background: rgb(33, 47, 60);;
+}
+
+.chart-series-line 
+{    
+    -fx-stroke-width: 1px;
+}
+
+#serie-unselect
+{    
+    -fx-stroke: rgb(33, 47, 60);
+}
+
+.plotOn
+{
+    -fx-background-color:#239B56;
+    -fx-background-radius: 5,5,4;
+}
+
+.plotOff
+{
+    -fx-background-color:#B03A2E;
+    -fx-background-radius: 5,5,4;
+}
+
+
+.ctrlButtonOn
+{
+    -fx-pref-width: 150px;
+    -fx-background-color:#239B56;
+    -fx-background-radius: 5,5,4;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+.ctrlButtonOff
+{
+    -fx-pref-width: 150px;
+    -fx-background-color:#B03A2E;
+    -fx-background-radius: 5,5,4;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+.split-pane
+{
+    -fx-border-color: gray;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+}
+
+.supPane
+{
+    -fx-background-color: #1F618D;
+    -fx-border-width: 2px;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #154360;
+}
+
+.leftPane
+{
+    -fx-background-color: #273746;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
